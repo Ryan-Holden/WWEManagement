@@ -1,0 +1,81 @@
+﻿@{
+    ViewData["Title"] = "Home";
+}
+
+<div class="text-center py-4 mb-5">
+    <h1 class="display-4 fw-bold">
+        WWE Management System
+    </h1>
+
+    <p class="lead text-muted">
+        Manage employees, wrestlers, and live events from one application.
+    </p>
+</div>
+
+<div class="row g-4">
+    <div class="col-md-4">
+        <div class="card h-100 shadow-sm border-0">
+            <div class="card-body d-flex flex-column">
+                <h5 class="card-title fw-semibold">
+                    Employees
+                </h5>
+
+                <p class="card-text text-muted">
+                    Manage employee records, roles, hire dates, and active status.
+                </p>
+
+                <div class="mt-auto">
+                    <a asp-controller="Employees"
+                       asp-action="Index"
+                       class="btn btn-primary">
+                        View Employees
+                    </a>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="col-md-4">
+        <div class="card h-100 shadow-sm border-0">
+            <div class="card-body d-flex flex-column">
+                <h5 class="card-title fw-semibold">
+                    Wrestlers
+                </h5>
+
+                <p class="card-text text-muted">
+                    Manage wrestler profiles and their related employee information.
+                </p>
+
+                <div class="mt-auto">
+                    <a asp-controller="Wrestlers"
+                       asp-action="Index"
+                       class="btn btn-primary">
+                        View Wrestlers
+                    </a>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="col-md-4">
+        <div class="card h-100 shadow-sm border-0">
+            <div class="card-body d-flex flex-column">
+                <h5 class="card-title fw-semibold">
+                    Events
+                </h5>
+
+                <p class="card-text text-muted">
+                    Schedule, edit, track, and manage WWE events.
+                </p>
+
+                <div class="mt-auto">
+                    <a asp-controller="Events"
+                       asp-action="Index"
+                       class="btn btn-primary">
+                        View Events
+                    </a>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

@@ -1,0 +1,134 @@
+﻿@model WWEManagement.Data.Models.Event
+
+@{
+    ViewData["Title"] = "Edit Event";
+}
+
+<div class="mb-4">
+    <h1 class="mb-1">Edit Event</h1>
+
+    <p class="text-muted mb-0">
+        Update the event schedule, location, and current status.
+    </p>
+</div>
+
+<div class="card shadow-sm border-0">
+    <div class="card-body">
+        <div class="row">
+            <div class="col-lg-7 col-md-9">
+
+                <form asp-action="Edit"
+                      method="post">
+
+                    <input type="hidden"
+                           asp-for="EventId" />
+
+                    <div asp-validation-summary="ModelOnly"
+                         class="text-danger mb-3">
+                    </div>
+
+                    <div class="mb-3">
+                        <label asp-for="EventName"
+                               class="form-label"></label>
+
+                        <input asp-for="EventName"
+                               class="form-control" />
+
+                        <span asp-validation-for="EventName"
+                              class="text-danger"></span>
+                    </div>
+
+                    <div class="mb-3">
+                        <label asp-for="EventDate"
+                               class="form-label"></label>
+
+                        <input asp-for="EventDate"
+                               type="datetime-local"
+                               class="form-control" />
+
+                        <span asp-validation-for="EventDate"
+                              class="text-danger"></span>
+                    </div>
+
+                    <div class="mb-3">
+                        <label asp-for="Venue"
+                               class="form-label"></label>
+
+                        <input asp-for="Venue"
+                               class="form-control" />
+
+                        <span asp-validation-for="Venue"
+                              class="text-danger"></span>
+                    </div>
+
+                    <div class="mb-3">
+                        <label asp-for="City"
+                               class="form-label"></label>
+
+                        <input asp-for="City"
+                               class="form-control" />
+
+                        <span asp-validation-for="City"
+                              class="text-danger"></span>
+                    </div>
+
+                    <div class="mb-3">
+                        <label asp-for="State"
+                               class="form-label"></label>
+
+                        <input asp-for="State"
+                               class="form-control" />
+
+                        <span asp-validation-for="State"
+                              class="text-danger"></span>
+                    </div>
+
+                    <div class="mb-4">
+                        <label asp-for="Status"
+                               class="form-label"></label>
+
+                        <select asp-for="Status"
+                                class="form-select">
+                            <option value="Scheduled">
+                                Scheduled
+                            </option>
+
+                            <option value="Completed">
+                                Completed
+                            </option>
+
+                            <option value="Cancelled">
+                                Cancelled
+                            </option>
+                        </select>
+
+                        <span asp-validation-for="Status"
+                              class="text-danger"></span>
+                    </div>
+
+                    <div class="d-flex gap-2">
+                        <button type="submit"
+                                class="btn btn-warning">
+                            Save Changes
+                        </button>
+
+                        <a asp-action="Details"
+                           asp-route-id="@Model.EventId"
+                           class="btn btn-secondary">
+                            Cancel
+                        </a>
+                    </div>
+
+                </form>
+
+            </div>
+        </div>
+    </div>
+</div>
+
+@section Scripts {
+    @{
+        await Html.RenderPartialAsync(
+            "_ValidationScriptsPartial");
+    }
+}

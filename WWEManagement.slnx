@@ -1,0 +1,8 @@
+<Solution>
+  <Folder Name="/Solution Items/">
+    <File Path=".gitignore" />
+  </Folder>
+  <Project Path="WWEManagement.Data/WWEManagement.Data.csproj" />
+  <Project Path="WWEManagement.Tests/WWEManagement.Tests.csproj" />
+  <Project Path="WWEManagement.Web/WWEManagement.Web.csproj" />
+</Solution>

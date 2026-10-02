@@ -1,0 +1,114 @@
+﻿@model List<WWEManagement.Data.Models.Wrestler>
+
+@{
+    ViewData["Title"] = "Wrestlers";
+}
+
+<div class="d-flex justify-content-between align-items-center mb-4">
+    <div>
+        <h1 class="mb-1">Wrestlers</h1>
+
+        <p class="text-muted mb-0">
+            Manage wrestler profiles and their associated employee records.
+        </p>
+    </div>
+
+    <a asp-action="Create"
+       class="btn btn-success">
+        Create Wrestler
+    </a>
+</div>
+
+@if (Model.Count == 0)
+{
+    <div class="alert alert-info">
+        No wrestlers have been added yet.
+    </div>
+}
+else
+{
+    <div class="table-responsive">
+        <table class="table table-hover align-middle">
+            <thead class="table-light">
+                <tr>
+                    <th>Wrestler ID</th>
+                    <th>Employee ID</th>
+                    <th>Ring Name</th>
+                    <th>Weight Class</th>
+                    <th>Debut Date</th>
+                    <th>Status</th>
+                    <th class="text-end">Actions</th>
+                </tr>
+            </thead>
+
+            <tbody>
+                @foreach (var wrestler in Model)
+                {
+                    <tr>
+                        <td>
+                            @wrestler.WrestlerId
+                        </td>
+
+                        <td>
+                            @wrestler.EmployeeId
+                        </td>
+
+                        <td>
+                            <span class="fw-semibold">
+                                @wrestler.RingName
+                            </span>
+                        </td>
+
+                        <td>
+                            @(wrestler.WeightClass ?? "Not specified")
+                        </td>
+
+                        <td>
+                            @(wrestler.DebutDate.HasValue
+                                ? wrestler.DebutDate.Value.ToString("MMM d, yyyy")
+                                : "Not specified")
+                        </td>
+
+                        <td>
+                            @if (wrestler.IsActive)
+                            {
+                                <span class="badge bg-success">
+                                    Active
+                                </span>
+                            }
+                            else
+                            {
+                                <span class="badge bg-secondary">
+                                    Inactive
+                                </span>
+                            }
+                        </td>
+
+                        <td class="text-end">
+                            <a asp-controller="Wrestlers"
+                               asp-action="Details"
+                               asp-route-id="@wrestler.WrestlerId"
+                               class="btn btn-sm btn-primary">
+                                Details
+                            </a>
+
+                            <a asp-controller="Wrestlers"
+                               asp-action="Edit"
+                               asp-route-id="@wrestler.WrestlerId"
+                               class="btn btn-sm btn-warning">
+                                Edit
+                            </a>
+
+                            <a asp-controller="Wrestlers"
+                               asp-action="Delete"
+                               asp-route-id="@wrestler.WrestlerId"
+                               class="btn btn-sm btn-danger">
+                                Delete
+                            </a>
+                        </td>
+                    </tr>
+                }
+            </tbody>
+        </table>
+    </div>
+}
